@@ -22,7 +22,7 @@ if (!arg[2]) {
 you're welcome`)
 } else if (endpoint.includes('/')) {
     //IF CLIENT.JS IS RUN WITH AN ENDPOINT...
-    URI = endpoint.slice(endpoint.indexOf('/'));
+    URI = endpoint.slice(endpoint.indexOf('/', 1));
 } else {
     URI = '/';
 }
