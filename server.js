@@ -16,22 +16,24 @@ const server = net.createServer((socket) => {
 
         if (method === 'GET') {
             switch (reqURI) {
-                default:
-                    socket.write(`HTTP/1.1 200 OK\nserver: whatevs \n Content-Type: text/html; charset = utf-8;\n\n<html>${fourOhFour}</html`);
-                    break;
                 case '':
                 case '/':
-                case 'index.html':
+                case '/index.html':
                 case 'index':
-                    socket.write(`HTTP/1.1 200 OK\nserver: whatevs \n Content-Type: text/html; charset = utf-8;\n\n<html>${indexHtml}</html`);
+                    socket.write(`HTTP/1.1 200 OK\nserver: An Element Server! \ndate: ${new Date().toUTCString()}\nContent-Type: text/html; charset = utf-8\n\n<html>${indexHtml}</html>`);
                     break;
                 case 'hydrogen':
-                case 'hydrogen.html':
-                    socket.write(`HTTP/1.1 200 OK\nserver: whatevs \n Content-Type: text/html; charset = utf-8;\n\n<html>${hydrogen}</html`);
+                case '/hydrogen.html':
+                    socket.write(`HTTP/1.1 200 OK\nserver: An Element Server! \ndate: ${new Date().toUTCString()}\nContent-Type: text/html; charset = utf-8\n\n<html>${hydrogen}</html>`);
                     break;
                 case 'helium':
-                case 'helium.html':
-                    socket.write(`HTTP/1.1 200 OK\nserver: whatevs \n Content-Type: text/html; charset = utf-8;\n\n<html>${helium}</html`);
+                case '/helium.html':
+                    socket.write(`HTTP/1.1 200 OK\nserver: An Element Server! \ndate: ${new Date().toUTCString()}\nContent-Type: text/html; charset = utf-8\n\n<html>${helium}</html>`);
+                    break;
+                case '404':
+                case '/404.html':
+                default:
+                    socket.write(`HTTP/1.1 200 OK\nserver: An Element Server! \ndate: ${new Date().toUTCString()}\nContent-Type: text/html; charset = utf-8\n\n<html>${fourOhFour}</html>`);
                     break;
             }
         }
@@ -41,8 +43,8 @@ const server = net.createServer((socket) => {
 
 
     });
-    // socket.write('HTTP/1.1 200 OK\nserver: whatevs \n\n\n <body><h1>kill me pls</h1></body>');
 });
+
 
 
 server.on('error', (err) => {
